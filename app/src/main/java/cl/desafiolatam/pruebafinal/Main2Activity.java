@@ -3,6 +3,7 @@ package cl.desafiolatam.pruebafinal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,7 @@ public class Main2Activity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextLastName;
     private EditText editTextAddress;
-    private Button btnSave, btnGetUsers;
+    private Button btnSave, btnGetUsers,btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,14 @@ public class Main2Activity extends AppCompatActivity {
                 getUsers();
             }
         });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                irAStorage();
+            }
+        });
     }
 
 
@@ -56,6 +65,8 @@ public class Main2Activity extends AppCompatActivity {
         editTextAddress = findViewById(R.id.et_address);
         btnSave = findViewById(R.id.btn_save);
         btnGetUsers = findViewById(R.id.btn_get_users);
+        btn = findViewById(R.id.button_file_storage);
+
 
 
     }
@@ -124,6 +135,9 @@ public class Main2Activity extends AppCompatActivity {
                 });
     }
 
-
+    private void irAStorage() {
+        Intent intent = new Intent(this, StorageActivity.class);
+        startActivity(intent);
+    }
 
 }
